@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Askme" %></title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Askme">
@@ -23,6 +24,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header">
+      <div class="header-logo">
+        <h1>Хорошие вопросы</h1>
+      </div>
+    </div>
+    <div class="content"><%= yield %></div>
   </body>
 </html>
