@@ -1,2 +1,30 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div>
+  <h1>Регистрация</h1>
+  <div class="form">
+    <%= form_for @user do |f| %>
+      <div>
+        <%= f.label :name, 'Имя' %>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :email, 'Логин(email)' %>
+        <%= f.text_field :email %>
+      </div>
+      <div>
+        <%= f.label :username, 'Никнейм' %>
+        <%= f.text_field :username %>
+      </div>
+      <div>
+        <%= f.label :password, 'Пароль' %>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation, 'Повторите пароль' %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div>
+        <%= f.submit 'Зарегистрироваться' %>
+      </div>
+    <% end %>
+  </div>
+</div>
