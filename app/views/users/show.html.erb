@@ -1,6 +1,24 @@
 <h1><%= @user.name %></h1>
 <div>
-  <img src="<%= @user.avatar_url %>">
+  <%= image_tag user_avatar(@user), alt: '[Фото]' %>
 </div>
 <h2><%= @user.username %></h2>
 
+<div class="form">
+  <%= form_for @question_new do |f| %>
+    <div>
+      <%= f.label "Ваш вопрос для #{@user.username}" %><br>
+      <%= f.text_area :text %>
+    </div>
+    <div>
+      <%= submit_tag 'Задать вопрос', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <h3>Вопросы</h3>
+  <% @questions.each do |q| %>
+    <%= render partial: 'questions/question', object: q %>
+  <% end %>
+</div>
