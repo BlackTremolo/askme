@@ -1,7 +1,23 @@
+<style>
+  .form-error{
+        color: #d2322d;
+  }
+</style>
 <div>
   <h1>Регистрация</h1>
   <div class="form">
     <%= form_for @user do |f| %>
+
+      <% if @user.errors.any? %>
+        <div class="form-error">
+          <ul>
+            <% @user.errors.full_messages.each do |m| %>
+              <li><%= m %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div>
         <%= f.label :name, 'Имя' %>
         <%= f.text_field :name %>

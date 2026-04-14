@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :load_user, except: [:index, :new, :create]
   def index
     @users = User.all
   end
@@ -12,18 +13,24 @@ class UsersController < ApplicationController
 
     if @user.save
       redirect_to root_url, notice: 'Пользователь зарегестрирован'
+    else
+      render 'new'
     end
   end
   def edit
   end
 
-  def show
-    @user = User.find(params[:id])
+  def update
+    if @user.update user_params
+      redirect_to user_path @user, notice: 'Данные обновлены'
+    else
+      render 'edit'
+    end
+  end
 
-    @questions = [
-      Question.new(text: 'Как дела?', created_at: Date.parse('13.04.2026'))
-    ]
-    @question_new = Question.new
+  def show
+    @questions = @user.questions.order(created_at: :desc)
+    @question_new = @user.questions.build
   end
 
   private
@@ -31,5 +38,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :name, :email, :username, :password, :password_confirmation, :avatar_url)
+  end
+
+  def load_user
+    @user = User.find(params[:id])
   end
 end
