@@ -31,6 +31,16 @@
         <% end %>
       <% end %>
     </div>
+    <div>
+      <% if current_user %>
+        <%= link_to "#{current_user.username}", user_path(current_user)%>
+        <%= link_to 'Выйти', log_out_path %>
+      <% else %>
+        <%= link_to 'Зарегистрироваться', sign_up_path  %>
+        <%= link_to 'Войти', log_in_path  %>
+      <% end %>
+
+    </div>
 
     <div class="header">
       <div class="header-logo">

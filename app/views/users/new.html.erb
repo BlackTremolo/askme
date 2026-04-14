@@ -39,6 +39,10 @@
         <%= f.password_field :password_confirmation %>
       </div>
       <div>
+        <%= f.label :avatar_url, 'Ссылка на фото(аватар)' %>
+        <%= f.text_field :avatar_url %>
+      </div>
+      <div>
         <%= f.submit 'Зарегистрироваться' %>
       </div>
     <% end %>

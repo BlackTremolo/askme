@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'users#index'
-  resources :users, exept: [:destriy]
+  resources :users, exept: [:destroy]
   resources :questions
+  resources :sessions, only: [:new, :create, :destroy]
 
-  get "up" => "rails/health#show", as: :rails_health_check
-
+  get 'sign_up' => 'users#new'
+  get 'log_in' => 'sessions#new'
+  get 'log_out' => 'sessions#destroy'
 end

@@ -1,0 +1,16 @@
+<h2>Вход на сайт</h2>
+<div>
+  <%= form_tag sessions_path do %>
+    <div>
+      <%= label_tag :email, 'Логин(email)' %>
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <div>
+      <%= label_tag :password, 'Пароль' %>
+      <%= password_field_tag :password, '' %>
+    </div>
+    <div>
+      <%= submit_tag 'Войти' %>
+    </div>
+  <% end %>
+</div>
